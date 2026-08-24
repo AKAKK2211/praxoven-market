@@ -1,58 +1,53 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PRAXOVEN — Checkout (Opening soon)</title>
-<meta name="description" content="Certified n8n automation outcomes — checkout. Pay in USDC after network confirmation.">
+<title>PRAXOVEN — Join waitlist</title>
+<meta name="description" content="Join the PRAXOVEN waitlist for this n8n automation. Checkout opens after acceptance testing — no payment taken now.">
 <link rel="stylesheet" href="style.css"></head>
 <body>
 <header class="nav"><span class="brand">◈ PRAXOVEN</span>
 <div class="navlinks"><a href="index.html">Home</a><a href="catalogue.html">Catalogue</a></div></header>
 <section class="panel" style="max-width:680px">
-<h2 id="title">Checkout</h2>
+<h2 id="title">Join the waitlist</h2>
 <p class="note" id="desc"></p>
 <div class="addrbox">
-<div style="font-size:13px;color:#fbbf24;font-weight:700;margin-bottom:6px">Checkout opens after settlement-network confirmation</div>
-<p class="note" style="margin:0">Payment collection is temporarily closed while the owner confirms the USDC network. Leave your email and we will notify you the moment checkout opens — no money moves in the meantime.</p>
+<div style="font-size:13px;color:#fbbf24;font-weight:700;margin-bottom:6px">Checkout is closed — join the waitlist</div>
+<p class="note" style="margin:0">This product is being acceptance-tested. When it passes and the payment
+acceptance gate is complete, we will email you with the price and a secure checkout link.
+No payment is requested now and no money moves.</p>
 </div>
-<form id="orderForm">
+<form id="orderForm" action="/api/contact" method="POST">
+<input type="hidden" name="product_id" id="fProduct">
+<input type="hidden" name="consent" value="on">
 <label style="display:block;margin:10px 0 4px;font-weight:600;font-size:14px">Your email
-<input type="email" id="fEmail" required placeholder="you@example.com" style="width:100%;padding:11px;border:1px solid #232a36;border-radius:8px;font-size:15px;margin-top:4px;background:#0e131c;color:#e9edf3"></label>
+<input type="email" name="email" id="fEmail" required placeholder="you@example.com" style="width:100%;padding:11px;border:1px solid #232a36;border-radius:8px;font-size:15px;margin-top:4px;background:#0e131c;color:#e9edf3"></label>
 <label style="display:block;margin:10px 0 4px;font-weight:600;font-size:14px">Your company / use case (optional)
-<input type="text" id="fOrg" placeholder="e.g. e-commerce store, agency" style="width:100%;padding:11px;border:1px solid #232a36;border-radius:8px;font-size:15px;margin-top:4px;background:#0e131c;color:#e9edf3"></label>
-<button type="submit" class="cta" style="margin-top:14px" id="buyBtn">Notify me when checkout opens</button>
-<p class="note">No payment is requested at this stage. Your interest is a lead — we will confirm the settlement network, then reopen checkout with the exact network and address.</p>
+<input type="text" name="company" id="fOrg" placeholder="e.g. e-commerce store, agency" style="width:100%;padding:11px;border:1px solid #232a36;border-radius:8px;font-size:15px;margin-top:4px;background:#0e131c;color:#e9edf3"></label>
+<button type="submit" class="cta" style="margin-top:14px" id="buyBtn">Join waitlist</button>
+<p class="note">By joining you consent to being contacted about this product (privacy notice available). You can unsubscribe at any time.</p>
 </form>
 <div id="orderResult"></div>
 </section>
 <script>
-const PRODUCTS = {"PROD-4FEDFCF9": {"name": "React To Pdfmonkey Callback", "price": 39.9, "kind": "single", "problem": "Rebuilt-verified automation: the library export lost its wiring; a linear flow was reconstructed and executed successfully in the sandbox (2026-08-24). Delivered done-for-you.", "outcome": "Template with rebuilt linear wiring \u2014 sandbox-executed and verified (rebuilt 2026-08-24 from the unwired library export).", "delivery_note": "VERIFIED rebuilt-wiring template: the library export lost its connections; a linear flow was reconstructed, imported and executed in the sandbox."}, "PROD-1E9FA37E": {"name": "Splitout Workflow", "price": 39.9, "kind": "single", "problem": "Automates splitout tasks; original: 0434_Splitout_Webhook_Automation_Webhook.json", "outcome": "Template with rebuilt linear wiring \u2014 sandbox-executed and verified (rebuilt 2026-08-24 from the unwired library export).", "delivery_note": "VERIFIED rebuilt-wiring template: the library export lost its connections; a linear flow was reconstructed, imported and executed in the sandbox."}, "PROD-623FFFE9": {"name": "Baserow Markdown To Html", "price": 29.9, "kind": "single", "problem": "Rebuilt-verified automation: the library export lost its wiring; a linear flow was reconstructed and executed successfully in the sandbox (2026-08-24). Delivered done-for-you.", "outcome": "Template with rebuilt linear wiring \u2014 sandbox-executed and verified (rebuilt 2026-08-24 from the unwired library export).", "delivery_note": "VERIFIED rebuilt-wiring template: the library export lost its connections; a linear flow was reconstructed, imported and executed in the sandbox."}, "PROD-9532A54B": {"name": "Luma Ai   Webhook Response V1   Ak", "price": 29.9, "kind": "single", "problem": "Rebuilt-verified automation: the library export lost its wiring; a linear flow was reconstructed and executed successfully in the sandbox (2026-08-24). Delivered done-for-you.", "outcome": "Template with rebuilt linear wiring \u2014 sandbox-executed and verified (rebuilt 2026-08-24 from the unwired library export).", "delivery_note": "VERIFIED rebuilt-wiring template: the library export lost its connections; a linear flow was reconstructed, imported and executed in the sandbox."}, "PROD-355930FB": {"name": "Transform Image To Lego Style Using Line And Dall E", "price": 29.9, "kind": "single", "problem": "Automates http tasks; original: 0688_HTTP_Webhook_Process_Webhook.json", "outcome": "Template with rebuilt linear wiring \u2014 sandbox-executed and verified (rebuilt 2026-08-24 from the unwired library export).", "delivery_note": "VERIFIED rebuilt-wiring template: the library export lost its connections; a linear flow was reconstructed, imported and executed in the sandbox."}, "PROD-64AE782F": {"name": "Airtable Markdown To Html", "price": 29.9, "kind": "single", "problem": "Automates markdown tasks; original: 1540_Markdown_Stickynote_Automation_Webhook.json", "outcome": "Template with rebuilt linear wiring \u2014 sandbox-executed and verified (rebuilt 2026-08-24 from the unwired library export).", "delivery_note": "VERIFIED rebuilt-wiring template: the library export lost its connections; a linear flow was reconstructed, imported and executed in the sandbox."}, "PROD-391C1150": {"name": "Telegram Ai Bot Template", "price": 24.9, "kind": "single", "problem": "Automates misc tasks; original: telegram-ai-bot-template.json", "outcome": "Runs the workflow reliably with synthetic-tested evidence", "delivery_note": ""}};
-const FULFILLMENT_EMAIL = 'info@ilicconsultancy.com';
-const CHECKOUT_OPEN = false;
-const ADDR = '';
+const PRODUCTS = {"PROD-4FEDFCF9": {"name": "React To Pdfmonkey Callback", "price": 39.9, "kind": "single", "problem": "n8n automation for the Http use case \u2014 in acceptance testing; join the waitlist for delivery details."}, "PROD-1E9FA37E": {"name": "Splitout Workflow", "price": 39.9, "kind": "single", "problem": "n8n automation for the Splitout use case \u2014 in acceptance testing; join the waitlist for delivery details."}, "PROD-623FFFE9": {"name": "Baserow Markdown To Html", "price": 29.9, "kind": "single", "problem": "n8n automation for the Baserow use case \u2014 in acceptance testing; join the waitlist for delivery details."}, "PROD-9532A54B": {"name": "Luma Ai   Webhook Response V1   Ak", "price": 29.9, "kind": "single", "problem": "n8n automation for the Executiondata use case \u2014 in acceptance testing; join the waitlist for delivery details."}, "PROD-355930FB": {"name": "Transform Image To Lego Style Using Line And Dall E", "price": 29.9, "kind": "single", "problem": "n8n automation for the Http use case \u2014 in acceptance testing; join the waitlist for delivery details."}, "PROD-64AE782F": {"name": "Airtable Markdown To Html", "price": 29.9, "kind": "single", "problem": "n8n automation for the Markdown use case \u2014 in acceptance testing; join the waitlist for delivery details."}, "PROD-391C1150": {"name": "Telegram Ai Bot Template", "price": 24.9, "kind": "single", "problem": "n8n automation for the Misc use case \u2014 in acceptance testing; join the waitlist for delivery details."}};
 const p = new URLSearchParams(location.search).get('product');
 const prod = PRODUCTS[p] || PRODUCTS[Object.keys(PRODUCTS)[0]];
-document.getElementById('title').textContent = 'Buy: ' + prod.name;
-document.getElementById('desc').textContent = (prod.outcome || prod.problem || 'Certified n8n automation, delivered done-for-you.').slice(0, 220);
-document.getElementById('buyBtn').textContent = CHECKOUT_OPEN ? `Buy — €${prod.price.toFixed(2)} ${prod.kind === 'subscription' ? '/month' : ''}` : 'Notify me when checkout opens';
-const copyBtn = document.getElementById('copyBtn');
-if (copyBtn) copyBtn.addEventListener('click', () => { navigator.clipboard.writeText(ADDR); copyBtn.textContent = 'Copied ✓'; setTimeout(() => copyBtn.textContent = 'Copy address', 1500); });
-document.getElementById('orderForm').addEventListener('submit', (ev) => {
+document.getElementById('title').textContent = 'Join the waitlist — ' + prod.name;
+document.getElementById('desc').textContent = (prod.problem || '').slice(0, 220);
+document.getElementById('fProduct').value = prod.id;
+document.getElementById('orderForm').addEventListener('submit', async (ev) => {
   ev.preventDefault();
   const email = document.getElementById('fEmail').value.trim();
-  const org = document.getElementById('fOrg').value.trim();
-  const txEl = document.getElementById('fTx');
-  const tx = txEl ? txEl.value.trim() : '';
-  if (CHECKOUT_OPEN && !/^0x[0-9a-fA-F]{64}$/.test(tx)) { document.getElementById('orderResult').innerHTML = '<span style="color:#f87171">Transaction hash must be 0x + 64 hex chars.</span>'; return; }
+  if (!email.includes('@')) { document.getElementById('orderResult').innerHTML = '<span style="color:#f87171">Please enter a valid email.</span>'; return; }
+  const form = document.getElementById('orderForm');
   try {
-    const k = 'praxoven_orders'; const arr = JSON.parse(localStorage.getItem(k) || '[]');
-    arr.push({ product: prod.name, price: prod.price, kind: prod.kind, email, org, tx, ts: new Date().toISOString() });
-    localStorage.setItem(k, JSON.stringify(arr));
-  } catch (e) {}
-  const kind = CHECKOUT_OPEN ? 'order' : 'lead';
-  const body = encodeURIComponent(`PRAXOVEN ${kind} (${CHECKOUT_OPEN ? 'order' : 'checkout interest — no payment'})\nProduct: ${prod.name}\nPrice: €${prod.price} ${prod.kind}\nEmail: ${email}\nOrg: ${org}` + (tx ? `\nTx: ${tx}` : '') + `\n\n${CHECKOUT_OPEN ? 'Verify on-chain, then schedule done-for-you installation.' : 'Add to lead list; notify when checkout opens.'}`);
-  document.getElementById('orderResult').innerHTML = `<span style="color:#34d399;font-weight:700">${CHECKOUT_OPEN ? 'Order recorded ✓' : 'Interest recorded ✓'}</span><br>
-    <a href="mailto:${FULFILLMENT_EMAIL}?subject=${encodeURIComponent('PRAXOVEN ' + kind + ' ' + prod.name)}&body=${body}">Send ${CHECKOUT_OPEN ? 'the order + tx hash' : 'your interest'} to the fulfillment contact</a><br>
-    <small>${CHECKOUT_OPEN ? 'We verify ' + tx.slice(0, 10) + '… on-chain and deliver to ' + email + '.' : 'We will email ' + email + ' when checkout opens.'}</small>`;
+    const r = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+    const text = await r.text();
+    document.getElementById('orderResult').innerHTML = '<span style="color:#34d399;font-weight:700">You are on the waitlist ✓</span><br><small>We will email ' + email + ' when checkout opens.</small>';
+    form.style.display = 'none';
+  } catch (e) {
+    document.getElementById('orderResult').innerHTML = '<span style="color:#f87171">Could not submit — please try again.</span>';
+  }
 });
 </script>
 </body></html>

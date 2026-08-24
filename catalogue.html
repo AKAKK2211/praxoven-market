@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PRAXOVEN — Workflow Catalogue (7 products)</title>
-<meta name="description" content="Browse 7 certified n8n automation products: workflows, bundles and a subscription. Buy the delivered outcome, pay in USDC.">
+<title>PRAXOVEN — Catalogue (7 automations in preparation)</title>
+<meta name="description" content="PRAXOVEN catalogue — 7 n8n automations in preparation. Join the waitlist; checkout opens after acceptance testing.">
 <link rel="stylesheet" href="style.css"></head>
 <body>
 <header class="nav"><span class="brand">◈ PRAXOVEN</span>
 <div class="navlinks"><a href="index.html">Home</a><a href="guide.html">Free guide</a></div></header>
 <section class="panel">
-<h2>Catalogue — 7 certified products</h2>
+<h2>Catalogue — 7 automations in preparation</h2>
 <input id="q" type="text" placeholder="Search (e.g. shopify, slack, sheets)…" style="width:100%">
 <select id="k"><option value="">All kinds</option><option value="single">Workflows</option>
 <option value="bundle">Bundles</option><option value="subscription">Subscription</option></select>
 <div id="list" class="grid" style="margin-top:14px"></div>
-<p class="note">Prices in EUR · paid in USDC at checkout · delivered done-for-you on your own n8n.</p></section>
-<script>const PRODUCTS = [{"id": "PROD-4FEDFCF9", "name": "React To Pdfmonkey Callback", "price": 39.9, "kind": "single", "category": "Http", "problem": "Rebuilt-verified automation: the library export lost its wiring; a linear flow was reconstructed and executed successfully in the sandbox (2026-08-24). Delivered done-for-you."}, {"id": "PROD-1E9FA37E", "name": "Splitout Workflow", "price": 39.9, "kind": "single", "category": "Splitout", "problem": "Automates splitout tasks; original: 0434_Splitout_Webhook_Automation_Webhook.json"}, {"id": "PROD-623FFFE9", "name": "Baserow Markdown To Html", "price": 29.9, "kind": "single", "category": "Baserow", "problem": "Rebuilt-verified automation: the library export lost its wiring; a linear flow was reconstructed and executed successfully in the sandbox (2026-08-24). Delivered done-for-you."}, {"id": "PROD-9532A54B", "name": "Luma Ai   Webhook Response V1   Ak", "price": 29.9, "kind": "single", "category": "Executiondata", "problem": "Rebuilt-verified automation: the library export lost its wiring; a linear flow was reconstructed and executed successfully in the sandbox (2026-08-24). Delivered done-for-you."}, {"id": "PROD-355930FB", "name": "Transform Image To Lego Style Using Line And Dall E", "price": 29.9, "kind": "single", "category": "Http", "problem": "Automates http tasks; original: 0688_HTTP_Webhook_Process_Webhook.json"}, {"id": "PROD-64AE782F", "name": "Airtable Markdown To Html", "price": 29.9, "kind": "single", "category": "Markdown", "problem": "Automates markdown tasks; original: 1540_Markdown_Stickynote_Automation_Webhook.json"}, {"id": "PROD-391C1150", "name": "Telegram Ai Bot Template", "price": 24.9, "kind": "single", "category": "Misc", "problem": "Automates misc tasks; original: telegram-ai-bot-template.json"}];
+<p class="note">Prices are indicative (EUR). Checkout is not yet open — joining the waitlist takes no payment.</p></section>
+<script>const PRODUCTS = [{"id": "PROD-4FEDFCF9", "name": "React To Pdfmonkey Callback", "price": 39.9, "kind": "single", "category": "Http", "problem": "n8n automation for the Http use case \u2014 in acceptance testing; join the waitlist for delivery details."}, {"id": "PROD-1E9FA37E", "name": "Splitout Workflow", "price": 39.9, "kind": "single", "category": "Splitout", "problem": "n8n automation for the Splitout use case \u2014 in acceptance testing; join the waitlist for delivery details."}, {"id": "PROD-623FFFE9", "name": "Baserow Markdown To Html", "price": 29.9, "kind": "single", "category": "Baserow", "problem": "n8n automation for the Baserow use case \u2014 in acceptance testing; join the waitlist for delivery details."}, {"id": "PROD-9532A54B", "name": "Luma Ai   Webhook Response V1   Ak", "price": 29.9, "kind": "single", "category": "Executiondata", "problem": "n8n automation for the Executiondata use case \u2014 in acceptance testing; join the waitlist for delivery details."}, {"id": "PROD-355930FB", "name": "Transform Image To Lego Style Using Line And Dall E", "price": 29.9, "kind": "single", "category": "Http", "problem": "n8n automation for the Http use case \u2014 in acceptance testing; join the waitlist for delivery details."}, {"id": "PROD-64AE782F", "name": "Airtable Markdown To Html", "price": 29.9, "kind": "single", "category": "Markdown", "problem": "n8n automation for the Markdown use case \u2014 in acceptance testing; join the waitlist for delivery details."}, {"id": "PROD-391C1150", "name": "Telegram Ai Bot Template", "price": 24.9, "kind": "single", "category": "Misc", "problem": "n8n automation for the Misc use case \u2014 in acceptance testing; join the waitlist for delivery details."}];
 function render() {
   const q = document.getElementById('q').value.toLowerCase();
   const k = document.getElementById('k').value;
@@ -23,7 +23,7 @@ function render() {
   list.innerHTML = rows.slice(0, 200).map(p => `<div class="card"><div class="k">${p.category||'n8n'}</div>
     <h3>${p.name}</h3><p>${(p.problem||'').slice(0,120)}</p>
     <div class="price">€${p.price.toFixed(2)}<small> · ${p.kind}</small></div>
-    <a class="cta small" href="checkout.html?product=${p.id}">Buy</a></div>`).join('') || '<p class="note">No matches.</p>';
+    <a class="cta small" href="checkout.html?product=${p.id}">Join waitlist</a></div>`).join('') || '<p class="note">No matches.</p>';
 }
 document.getElementById('q').addEventListener('input', render);
 document.getElementById('k').addEventListener('change', render);
